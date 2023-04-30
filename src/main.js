@@ -28,7 +28,7 @@ bot.on(message('voice'), async (ctx) => {
         const mp3Path = await ogg.toMp3(oggPath, userId)
 
         const text = await openai.transcription(mp3Path)
-        await ctx.reply(code(`Ващ запрос: ${text}`))
+        await ctx.reply(code(`Ваш запрос: ${text}`))
 
         ctx.session.messages.push({role: openai.roles.USER, content: text})
         const response = await openai.chat(ctx.session.messages)
